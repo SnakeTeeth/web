@@ -17,4 +17,5 @@ urlpatterns = [
     path('feedback/<pk>/dislike/',
         login_required(VotesView.as_view(model=FeedBack, vote_type=LikeDislike.DISLIKE)),
         name='comment_dislike'),
+    # path('feedback/delete', delete, name='delete'),
 ]

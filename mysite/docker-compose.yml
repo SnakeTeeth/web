@@ -1,14 +1,19 @@
 services:
+  # Сборка
   web:
     build: .
     environment:
       MYENV: EXAMPLE
     volumes:
       - .:/code
+
+  # Миграция баз данных
   web_migrate:
     extends:
       service: web
     command: python manage.py migrate
+
+  # Запуск
   web_run:
     extends:
       service: web

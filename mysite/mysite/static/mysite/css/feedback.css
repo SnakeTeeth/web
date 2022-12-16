@@ -104,3 +104,15 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.block {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+  box-sizing: border-box;
+}
+
+.block div {
+  width: 10em;
+  height: 2em;
+}

@@ -46,16 +46,19 @@
   <div class="feedbacks">
     {% for f in feedbacks %}
     <div class="feedback__item">
-      <div class="feedback__label">
-        Отзыв от пользователя {{ f.user }}:<br>
+<!--      <div class="block">-->
+        <div class="feedback__label">
+        Отзыв от пользователя {{ f.user }}:
       </div>
+<!--      {% if f.user == request.user %}<div>-->
+<!--        <a href="{%comment%}{% url 'delete'%}{%endcomment%}}?id={{ f.pk }}" class="delete" title="Удалить">X</a>-->
+<!--      </div>{% endif %}-->
+<!--      </div>-->
       
       <div class="feedback__content">
         {{ f.text }} <br>
       </div>
 
-      <!--  CSRF-токен для POST метода   -->
-      {% csrf_token %}
       {% include 'mysite/likedislike.html' with like_obj=f %}
     </div>
     {% endfor %}

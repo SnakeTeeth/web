@@ -24,11 +24,10 @@ $(function () {
 
 function like()
 {
-    var like = $(this);
-    var type = like.data('type');
-    var pk = like.data('id');
-    var action = like.data('action');
-    var dislike = like.next();
+    var like = $(this);                     // Получаем объект лайка из шаблона
+    var type = like.data('type');           // Тип объекта (в нашем случае - feedback)
+    var pk = like.data('id');               // Номер объекта в БД
+    var action = like.data('action');       // Действие (like/dislike)
  
     $.ajax({
         url : "/" + type + "/" + pk + "/" + action + "/",
@@ -68,7 +67,6 @@ function dislike()
     var type = dislike.data('type');
     var pk = dislike.data('id');
     var action = dislike.data('action');
-    var like = dislike.prev();
  
     $.ajax({
         url : "/" + type + "/" + pk + "/" + action + "/",

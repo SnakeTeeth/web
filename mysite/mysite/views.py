@@ -86,7 +86,7 @@ def logout(request):
 
 
 class VotesView(View):
-    model = None  # Модель данных - Статьи или Комментарии
+    model = None  # Модель данных - Отзывы
     vote_type = None  # Тип комментария Like/Dislike
 
     def post(self, request, pk):
@@ -118,3 +118,18 @@ class VotesView(View):
             "sum_rating":
             obj.votes.sum_rating()
         }), content_type="application/json")
+
+
+# def delete(request):
+#     context = {
+#         'title': "Отзывы",
+#         'menu': menu,
+#         'feedbacks': FeedBack.objects.all(),
+#     }
+#
+#     id = request.GET.get("id")
+#
+#     obj = FeedBack.objects.get(pk=id)
+#     obj.delete()
+#
+#     return render(request, 'mysite/feedback.html', context=context)
