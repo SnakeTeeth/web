@@ -6,8 +6,8 @@
     <div data-id="{{ like_obj.id }}" data-type="feedback" data-action="like" title="Нравится">
         <div class="like-icon {% if like_obj.votes.likes|user_in:user %}added{% endif %}"
              id="#l_{{ like_obj.id }}"></div>
-        <div data-count="like" style="text-align: center; padding: 2px;"
-             id="#l_count_{{ like_obj.id }}">{{ like_obj.votes.likes.count }}</div>
+        <div data-count="like" style="text-align: center; padding: 2px;" data-type="like"
+             data-id="{{ like_obj.id }}" id="#l_count_{{ like_obj.id }}">{{ like_obj.votes.likes.count }}</div>
     </div>
 </div>
 

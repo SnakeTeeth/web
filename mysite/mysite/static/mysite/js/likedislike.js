@@ -99,6 +99,33 @@ function dislike()
  
     return false;
 }
+
+setInterval(function () {
+    let id_list = [];
+
+    // Получаем data-id всех элементов like/dislike
+    $('[data-type="like"]').each(function(e) {
+        var $el = $(this);
+        id_list.push($el.attr('data-id'));
+    })
+
+    id_list.forEach(function(pk) {
+        $.ajax({
+            url: "/feedback/" + pk + "/update/",
+            type: 'POST',
+            data: {'check': true},
+
+            success: function (json) {
+                // Получаем блок, в который записывается количество лайков и вносим новое кол-во.
+                let count_l = document.getElementById('#l_count_' + pk);
+                count_l.innerHTML = json.like_count;
+                // Получаем блок, в который записывается количество дизлайков и вносим новое кол-во.
+                let count_dl = document.getElementById('#dl_count_' + pk);
+                count_dl.innerHTML = json.dislike_count;
+            }
+        });
+    });
+}, 10000);
  
 // Подключение обработчиков
 $(function() {

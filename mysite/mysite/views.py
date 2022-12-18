@@ -120,6 +120,20 @@ class VotesView(View):
         }), content_type="application/json")
 
 
+class UpdateView(View):
+    model = None
+
+    def post(self, request, pk):
+        obj = self.model.objects.get(pk=pk)
+
+        return HttpResponse(json.dumps({
+            "like_count":
+            obj.votes.likes().count(),
+            "dislike_count":
+            obj.votes.dislikes().count(),
+        }), content_type="application/json")
+
+
 # def delete(request):
 #     context = {
 #         'title': "Отзывы",
